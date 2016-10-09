@@ -1,0 +1,28 @@
+web:
+  image: gowthamgts/web
+  ports:
+    - "80:80"
+app:
+  image: gowthamgts/app
+  links:
+    - db
+  ports:
+    - "3000:3000"
+  environment:
+    RAILS_ENV: production
+    DB_HOST: db
+    DB_PORT: 3306
+    DB_ADAPTER: mysql
+    DB_DATABASE: todo
+    DB_USER: tododbuser
+    DB_PASS: password
+db:
+  image: mysql
+  volumes:
+    - "./.data/db:/var/lib/mysql"
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: rootpassword
+    MYSQL_DATABASE: todo
+    MYSQL_USER: tododbuser
+    MYSQL_PASSWORD: password
