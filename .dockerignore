@@ -1,0 +1,4 @@
+Dockerfile
+.git
+.gitignore
+docker-compose.yml
