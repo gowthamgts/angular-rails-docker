@@ -15,8 +15,8 @@ test:
 
 production:
   <<: *default
-  database: todo
-  username: root
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_UN'] %>
   password: <%= ENV['DB_PW'] %>
   host: <%= ENV['DB_HOST'] %>
   port: <%= ENV['DB_PORT'] %>
